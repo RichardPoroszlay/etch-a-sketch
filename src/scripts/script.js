@@ -1,3 +1,7 @@
+function changeFieldColor(field) {
+    field.style.backgroundColor = "black";
+}
+
 for (let i = 0; i < 16; i++) {
     let row = document.createElement("div");
     for (let i = 0; i < 16; i++) {
@@ -7,4 +11,11 @@ for (let i = 0; i < 16; i++) {
     }
     document.getElementById("container").appendChild(row);
 }
-  
+
+const fields = document.querySelectorAll(".field");
+
+fields.forEach((field) => {
+    field.addEventListener("click", () => {
+      changeFieldColor(field);
+    });
+});
