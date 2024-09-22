@@ -10,6 +10,11 @@ function changeGridSize(size) {
     const gridContainer = document.getElementById("gridContainer");
     removeOldGrid(gridContainer);
 
+    let isMouseDown = false;
+
+    document.addEventListener("mousedown", () => isMouseDown = true);
+    document.addEventListener("mouseup", () => isMouseDown = false);
+
     for (let rowIndex = 0; rowIndex < size; rowIndex++) {
         const row = document.createElement("div");
         row.classList.add("row");
@@ -17,8 +22,16 @@ function changeGridSize(size) {
         for (let colIndex = 0; colIndex < size; colIndex++) {
             const field = document.createElement("div");
             field.classList.add("field");
-            
-            field.addEventListener("click", () => changeFieldColor(field));
+
+            field.addEventListener("mouseover", () => {
+                if (isMouseDown) {
+                    changeFieldColor(field);
+                }
+            });
+
+            field.addEventListener("mousedown", () => {
+                changeFieldColor(field);
+            });
 
             row.appendChild(field);
         }
