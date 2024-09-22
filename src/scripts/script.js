@@ -1,5 +1,5 @@
 function changeFieldColor(field) {
-    field.style.backgroundColor = "black";
+    field.style.backgroundColor = "blue";
 }
 
 function removeOldGrid(grid) {

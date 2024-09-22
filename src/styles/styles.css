@@ -3,8 +3,8 @@
   }
 
 #gridContainer div .field{
-    background: gray;
-    border: 4px solid green;
+    background: white;
+    border: 4px solid black;
     width: 50px;
     height: 50px;
     flex: 1;
