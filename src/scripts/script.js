@@ -19,7 +19,7 @@ function changeGridSize(size) {
             field.classList.add("field");
             
             field.addEventListener("click", () => changeFieldColor(field));
-            
+
             row.appendChild(field);
         }
 
@@ -33,9 +33,21 @@ function updateGridFromSlider(slider, outputElement) {
     changeGridSize(size); 
 }
 
+function clearGrid() {
+    let fields = document.querySelectorAll(".field");
+    
+    fields.forEach((field) => {
+        field.style.backgroundColor = "white";
+    });
+}
+
 const slider = document.getElementById("slider");
 let sliderOutput = document.getElementById("sliderOutput");
 
 slider.addEventListener("input", () => {
     updateGridFromSlider(slider, sliderOutput);
 });
+
+const clearButton = document.getElementById("clearButton");
+
+clearButton.addEventListener("click", clearGrid);
