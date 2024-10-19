@@ -1,7 +1,11 @@
 function changeFieldColor(field) {
     if (eraserButton.classList.contains("active")) {
-        field.style.backgroundColor = "white"
-    } else {
+        field.style.backgroundColor = "white";
+    }
+    else if(rainbowButton.classList.contains("active")) {
+        field.style.backgroundColor = "#"+(Math.random()*0xFFFFFF<<0).toString(16);
+    }
+    else {
         field.style.backgroundColor = "blue";
     }
 }
@@ -69,8 +73,14 @@ const clearButton = document.getElementById("clearButton");
 
 clearButton.addEventListener("click", clearGrid);
 
-const eraserButton = document.getElementById("eraserButton")
+const eraserButton = document.getElementById("eraserButton");
 
 eraserButton.addEventListener("click", () => {
     eraserButton.classList.toggle("active");
+});
+
+const rainbowButton = document.getElementById("rainbowButton");
+
+rainbowButton.addEventListener("click", () => {
+    rainbowButton.classList.toggle("active");
 });
