@@ -9,11 +9,15 @@
 </head>
 <body>
     <h1>Etch a Sketch</h1>
-    <div id="slideContainer">
-        <input type="range" min="1" max="64" value="32" id="slider">
-        <div id="sliderOutput"></div>
-    </div>
-    <div id="gridContainer">
+    <div id="mainLayout">
+        <div id="controlsPanel">
+            <input type="range" min="1" max="64" value="32" id="slider">
+            <div id="sliderOutput"></div>
+            <button id="clearButton">Clear</button>
+            <button id="eraserButton">Eraser</button>
+        </div>
+        <div id="gridContainer">
+        </div>
     </div>
 </body>
 </html>

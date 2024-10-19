@@ -9,3 +9,8 @@
     height: 50px;
     flex: 1;
 }
+
+.active {
+  background-color: blue;
+  color: white;
+}

@@ -1,5 +1,9 @@
 function changeFieldColor(field) {
-    field.style.backgroundColor = "blue";
+    if (eraserButton.classList.contains("active")) {
+        field.style.backgroundColor = "white"
+    } else {
+        field.style.backgroundColor = "blue";
+    }
 }
 
 function removeOldGrid(grid) {
@@ -64,3 +68,9 @@ slider.addEventListener("input", () => {
 const clearButton = document.getElementById("clearButton");
 
 clearButton.addEventListener("click", clearGrid);
+
+const eraserButton = document.getElementById("eraserButton")
+
+eraserButton.addEventListener("click", () => {
+    eraserButton.classList.toggle("active");
+});
