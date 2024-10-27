@@ -73,14 +73,11 @@ const clearButton = document.getElementById("clearButton");
 
 clearButton.addEventListener("click", clearGrid);
 
-const eraserButton = document.getElementById("eraserButton");
+const callToActionBtns = document.querySelectorAll(".triggerable");
 
-eraserButton.addEventListener("click", () => {
-    eraserButton.classList.toggle("active");
-});
-
-const rainbowButton = document.getElementById("rainbowButton");
-
-rainbowButton.addEventListener("click", () => {
-    rainbowButton.classList.toggle("active");
+callToActionBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+        callToActionBtns.forEach(otherBtn => otherBtn != e.target ? otherBtn.classList.remove("active") : "");
+            e.target.classList.toggle("active");
+    });
 });
