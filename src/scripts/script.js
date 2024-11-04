@@ -31,6 +31,8 @@ function increaseRGB(field, rIncrement, gIncrement, bIncrement) {
 }
 
 function changeFieldColor(field) {
+    let colorInput = document.getElementById('colorInput');
+
     if (eraserButton.classList.contains("active")) {
         field.style.backgroundColor = "rgba(255, 255, 255, 1)";
     }
@@ -44,7 +46,7 @@ function changeFieldColor(field) {
         increaseRGB(field, 20, 20, 20)
     }
     else {
-        field.style.backgroundColor = "rgba(0, 0, 255, 1)";
+        field.style.backgroundColor = colorInput.value;
     }
 }
 
