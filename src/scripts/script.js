@@ -54,43 +54,40 @@ function removeOldGrid(grid) {
     grid.replaceChildren();
 }
 
-function changeGridSize(size) {    
-    const gridContainer = document.getElementById("gridContainer");
-    removeOldGrid(gridContainer);
+function changeGridSize(size) {
+    const gridWrapper = document.getElementById('gridWrapper');
+    removeOldGrid(gridWrapper);
 
     let isMouseDown = false;
 
     document.addEventListener("mousedown", () => isMouseDown = true);
     document.addEventListener("mouseup", () => isMouseDown = false);
 
-    for (let rowIndex = 0; rowIndex < size; rowIndex++) {
-        const row = document.createElement("div");
-        row.classList.add("row");
+    gridWrapper.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    gridWrapper.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
-        for (let colIndex = 0; colIndex < size; colIndex++) {
-            const field = document.createElement("div");
-            field.classList.add("field");
 
-            field.addEventListener("mouseover", () => {
-                if (isMouseDown) {
-                    changeFieldColor(field);
-                }
-            });
+    for (let i = 0; i < size * size; i++) {
+        const field= document.createElement('div');
+        field.classList.add('field');
 
-            field.addEventListener("mousedown", () => {
+        field.addEventListener("mouseover", () => {
+            if (isMouseDown) {
                 changeFieldColor(field);
-            });
+            }
+        });
 
-            row.appendChild(field);
-        }
+        field.addEventListener("mousedown", () => {
+            changeFieldColor(field);
+        });
 
-        gridContainer.appendChild(row);
+        gridWrapper.appendChild(field);
     }
 }
 
 function updateGridFromSlider(slider, outputElement) {
     const size = slider.value;
-    outputElement.textContent = size;
+    outputElement.textContent = size + "x" + size;
     changeGridSize(size); 
 }
 
@@ -121,3 +118,5 @@ callToActionBtns.forEach((btn) => {
             e.target.classList.toggle("active");
     });
 });
+
+changeGridSize(32); // by default, 32x32 grid size will be used
